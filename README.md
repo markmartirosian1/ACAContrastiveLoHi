@@ -1,4 +1,5 @@
-Experiment
+Experiment: 
+
 Binary hit-identification (matching the Lo-Hi benchmark's Hi task), but training on continuous activity labels from ChEMBL as the primary signal. These continuous labels are used as opposed to the binary ones because they are more precise, and also because continuous magnitude is what makes ACA's activity-cliff-aware contrastive loss possible: a binary label alone can't distinguish a small activity difference from a large one, which is exactly the information that the triplet loss needs to weight its margins correctly. Binary metrics (PR AUC, accuracy) are computed by thresholding the continuous prediction against an empirically discovered cutoff, not through separate classification supervision. Tested on matched-continuous versions of three Lo-Hi Hi datasets: KDR-Hi, DRD2-Hi, and Sol-Hi.
 Method
 Corrected ACA triplet loss: uncapped margin (|y_a - y_n| - |y_a - y_p|), ordinary (not squared) L2 distance, explicit c_l/c_u conditional mining (no arbitrary structural-similarity gate), active-triplet-only per-anchor averaging, all matching the original paper.
